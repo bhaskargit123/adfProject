@@ -4,8 +4,15 @@
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"serviceEndpoint": "https://bhaskarprojectblob.blob.core.windows.net/",
-			"accountKind": "StorageV2"
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=bhaskarprojectblob;",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "blobAccesKey"
+			}
 		}
 	}
 }
