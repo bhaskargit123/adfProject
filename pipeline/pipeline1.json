@@ -112,13 +112,7 @@
 							"outputs": [
 								{
 									"referenceName": "ds_bronze_adls",
-									"type": "DatasetReference",
-									"parameters": {
-										"fileName": {
-											"value": "@variables('tableName')",
-											"type": "Expression"
-										}
-									}
+									"type": "DatasetReference"
 								}
 							]
 						}
