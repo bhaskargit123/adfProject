@@ -1,0 +1,9 @@
+{
+	"name": "adbbhaskarproject",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "56d3672e-891b-45f1-b1ca-34b9904ceda7",
+		"tenantId": "c1721880-76a8-4efe-b320-967c7fd1a746"
+	}
+}
