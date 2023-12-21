@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "pl_ingest_from_onprem_sql",
 	"properties": {
 		"activities": [
 			{
