@@ -20,7 +20,7 @@
 			],
 			"scriptLines": [
 				"source(output(",
-				"          Datekey as string",
+				"          Datekey as date 'MM/dd/yyyy'",
 				"     ),",
 				"     useSchema: false,",
 				"     allowSchemaDrift: true,",
@@ -33,11 +33,7 @@
 				"     escapeChar: '\\\\',",
 				"     quoteChar: '\\\"',",
 				"     columnNamesAsHeader: true) ~> source1",
-				"source1 derive(dayNbr = iif(\r",
-				"    instr(substring(Datekey, 0,2), '/')>0,\r",
-				"    replace(substring(Datekey, 0,2), '/', ''), \r",
-				"    substring(Datekey, 0,2)\r",
-				"    )) ~> derivedColumn1"
+				"source1 derive(Year = year(Datekey)) ~> derivedColumn1"
 			]
 		}
 	}
