@@ -134,7 +134,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"fileName": {
-											"value": "@concat(\r\n    item().name,\r\n    '.parquet'\r\n    )",
+											"value": "@replace(\r\n    item().name,\r\n    '.csv',\r\n    '.parquet'\r\n)",
 											"type": "Expression"
 										}
 									}
