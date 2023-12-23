@@ -1,0 +1,73 @@
+{
+	"name": "df_date_transformation",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "ls_adls",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "ls_adls",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Datekey as date 'MM/dd/yyyy'",
+				"     ),",
+				"     useSchema: false,",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'bronze',",
+				"     fileName: 'Date.csv',",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: true) ~> source1",
+				"source1 derive(Year = year(Datekey),",
+				"          Month = case(\r",
+				"    month(Datekey)==1, \"Jan\",\r",
+				"    month(Datekey)==2, \"Feb\",\r",
+				"    month(Datekey)==3, \"Mar\",\r",
+				"    month(Datekey)==4, \"Apr\",\r",
+				"    month(Datekey)==5, \"May\",\r",
+				"    month(Datekey)==6, \"Jun\",\r",
+				"    month(Datekey)==7, \"Jul\",\r",
+				"    month(Datekey)==8, \"Aug\",\r",
+				"    month(Datekey)==9, \"Sep\",\r",
+				"    month(Datekey)==10, \"Oct\",\r",
+				"    month(Datekey)==11, \"Nov\", \"Dec\"\r",
+				"    ),",
+				"          DateID = toString(Datekey, \"MMddYYYY\")) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     fileSystem: 'silver',",
+				"     partitionFileNames:['date.parquet'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}

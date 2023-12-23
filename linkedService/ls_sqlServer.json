@@ -1,0 +1,23 @@
+{
+	"name": "ls_sqlServer",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "Integrated Security=True;Data Source=RSOFT;Initial Catalog=DBSTORE",
+			"userName": "RSOFT\\bhaskar",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sqlPassword"
+			}
+		},
+		"connectVia": {
+			"referenceName": "SelfHostedIRProject",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
