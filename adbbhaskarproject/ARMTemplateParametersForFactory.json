@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adbbhaskarproject"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": "DefaultEndpointsProtocol=https;AccountName=bhaskarprojectblob;"
+		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"ls_sqlServer_connectionString": {
+			"value": "Integrated Security=True;Data Source=RSOFT;Initial Catalog=DBSTORE"
+		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"value": "1223-013759-gfo0d0f6"
+		},
+		"AzureKeyVault_properties_typeProperties_baseUrl": {
+			"value": "https://bhaskar-project-kv.vault.azure.net/"
+		},
+		"ls_adls_properties_typeProperties_url": {
+			"value": "https://bhaskaradlsproject.dfs.core.windows.net/"
+		},
+		"ls_sqlServer_properties_typeProperties_userName": {
+			"value": "RSOFT\\bhaskar"
+		}
+	}
+}
