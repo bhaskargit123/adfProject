@@ -1,0 +1,54 @@
+{
+	"name": "ds_gold",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "part-*.parquet",
+				"folderPath": "finalResult",
+				"fileSystem": "gold"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "Channel",
+				"type": "UTF8"
+			},
+			{
+				"name": "Brand",
+				"type": "UTF8"
+			},
+			{
+				"name": "Product",
+				"type": "UTF8"
+			},
+			{
+				"name": "Promotion",
+				"type": "UTF8"
+			},
+			{
+				"name": "Store",
+				"type": "UTF8"
+			},
+			{
+				"name": "Year",
+				"type": "INT32"
+			},
+			{
+				"name": "Month",
+				"type": "UTF8"
+			},
+			{
+				"name": "Sales",
+				"type": "DOUBLE"
+			}
+		]
+	}
+}
